@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./index.css";
 
 export default function StockData() {
-	const [input, setInput] = useState("5-January-2000");
+	const [input, setInput] = useState();
 	const [stock, setStock] = useState();
 
 	const URL = "https://jsonmock.hackerrank.com/api/stocks?date=";
@@ -32,20 +32,22 @@ export default function StockData() {
 					Search
 				</button>
 			</section>
-			<div>
-				{stock ? (
-					<ul className="mt-50 slide-up-fade-in styled" id="stock" data-testid="stock-data">
-						<li className="py-10">Open: {stock.open}</li>
-						<li className="py-10">Close: {stock.close}</li>
-						<li className="py-10">High: {stock.high}</li>
-						<li className="py-10">Low: {stock.low}</li>
-					</ul>
-				) : (
-					<div className="mt-50 slide-up-fade-in" id="no-result" data-testid="no-result">
-						{!stock && "No Results Found"}
-					</div>
-				)}
-			</div>
+			<section className="layout-row align-items-center justify-content-center">
+				<div>
+					{stock ? (
+						<ul className="mt-50 slide-up-fade-in styled" id="stock" data-testid="stock-data">
+							<li className="py-10">Open: ${stock.open}</li>
+							<li className="py-10">Close: ${stock.close}</li>
+							<li className="py-10">High: ${stock.high}</li>
+							<li className="py-10">Low: ${stock.low}</li>
+						</ul>
+					) : (
+						<div className="mt-50 slide-up-fade-in" id="no-result" data-testid="no-result">
+							<div data-testid="no-result">No Results Found</div>
+						</div>
+					)}
+				</div>
+			</section>
 		</div>
 	);
 }
