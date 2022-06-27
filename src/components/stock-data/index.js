@@ -15,19 +15,14 @@ export default function StockData() {
 			})
 			.then((json) => {
 				console.log(json);
-				console.log(json.data[0]);
 				setStock(json.data[0]);
 			});
-	}
-
-	function onChange(event) {
-		setInput(event.target.value);
 	}
 
 	return (
 		<div>
 			<section className="layout-row align-items-center justify-content-center">
-				<input type="text" className="large" placeholder="5-January-2000" onChange={onChange} id="app-input" data-testid="app-input" />
+				<input type="text" className="large" placeholder="5-January-2000" value={input} onChange={(e) => setInput(e.target.value)} id="app-input" data-testid="app-input" />
 				<button className="" id="submit-button" data-testid="submit-button" onClick={callApi}>
 					Search
 				</button>
